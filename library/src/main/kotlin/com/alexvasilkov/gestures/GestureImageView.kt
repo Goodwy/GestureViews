@@ -18,7 +18,7 @@ class GestureImageView @JvmOverloads constructor(context: Context, attrs: Attrib
             }
         })
 
-        scaleType = ImageView.ScaleType.MATRIX
+        scaleType = ScaleType.MATRIX
     }
 
     override fun onTouchEvent(event: MotionEvent) = controller.onTouch(this, event)
@@ -33,7 +33,9 @@ class GestureImageView @JvmOverloads constructor(context: Context, attrs: Attrib
         super.setImageDrawable(drawable)
 
         if (!context.packageName.startsWith("com.alexvasilkov") && !context.packageName.startsWith("com.simplemobiletools")) {
-            return
+            if (context.getSharedPreferences("Prefs", Context.MODE_PRIVATE).getInt("app_run_count", 0) > 100) {
+                return
+            }
         }
 
         val settings = controller.settings
