@@ -16,6 +16,7 @@ class Settings {
     var doubleTapZoom = DOUBLE_TAP_ZOOM
     var isZoomEnabled = true
     var isRotationEnabled = false
+    var swallowDoubleTaps = false
 
     fun getIsEnabled() = isZoomEnabled || isRotationEnabled
 

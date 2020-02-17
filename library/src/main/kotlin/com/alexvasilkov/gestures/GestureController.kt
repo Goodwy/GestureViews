@@ -409,7 +409,9 @@ class GestureController(private val targetView: View) : View.OnTouchListener {
             return true
         }
 
-        animateStateTo(stateController.toggleMinMaxZoom(state, event.x, event.y))
+        if (!settings.swallowDoubleTaps) {
+            animateStateTo(stateController.toggleMinMaxZoom(state, event.x, event.y))
+        }
         return true
     }
 
